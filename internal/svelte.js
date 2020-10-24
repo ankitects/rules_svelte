@@ -1,4 +1,5 @@
 const fs = require("fs");
+const process = require("process");
 
 const outputJs = process.argv[3];
 const input = process.argv[2];
@@ -9,6 +10,20 @@ const source = fs.readFileSync(input, "utf8");
 
 const preprocessOptions = require("svelte-preprocess")({});
 preprocessOptions.filename = input;
+
+const svelte2tsx = require("svelte2tsx");
+
+let tsoutput = svelte2tsx(source, {
+  filename: input,
+  strictMode: true,
+  isTsFile: true,
+});
+let codeLines = tsoutput.code.split("\n");
+// replace the "///<reference types="svelte" />" with a line
+// turning off checking, as we'll use svelte-check for that
+codeLines[0] = "// @ts-nocheck";
+const outputTs = "temp.tsx";
+fs.writeFileSync(outputTs, codeLines.join("\n"));
 
 svelte.preprocess(source, preprocessOptions).then(
   (processed) => {
@@ -27,7 +42,9 @@ svelte.preprocess(source, preprocessOptions).then(
       console.log(`warnings during compile: ${result.warnings}`);
       return;
     }
-    fs.writeFileSync(outputJs, result.js.code);
+
+    let code = result.js.code;
+    fs.writeFileSync(outputJs, code);
   },
   (error) => {
     console.log(`preprocess failed: ${error}`);

@@ -49,6 +49,7 @@ nodejs_binary(
         ":svelte.js",
         "@build_bazel_rules_svelte_deps//svelte",
         "@build_bazel_rules_svelte_deps//svelte-preprocess",
+        "@build_bazel_rules_svelte_deps//svelte2tsx",
     ],
     entry_point = ":svelte.js",
     visibility = ["//visibility:public"],
