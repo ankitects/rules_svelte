@@ -60,7 +60,7 @@ svelte = rule(
         ),
     },
     outputs = {
-        "build": "%{name}.svelte.js",
+        "build": "%{name}.svelte.mjs",
         "buildDef": "%{name}.svelte.d.ts",
     },
 )
