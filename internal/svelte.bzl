@@ -33,7 +33,7 @@ mv temp.d.ts {output_def}""".format(
     trans_srcs = get_transitive_srcs(ctx.files.srcs + [ctx.outputs.build, ctx.outputs.buildDef], ctx.attr.deps)
 
     return [
-        declaration_info(depset([ctx.outputs.buildDef])),
+        declaration_info(depset([ctx.outputs.buildDef]), deps = [ctx.attr._shims]),
         SvelteFilesInfo(transitive_sources = trans_srcs),
         DefaultInfo(files = trans_srcs),
     ]
