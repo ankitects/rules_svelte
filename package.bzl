@@ -15,4 +15,5 @@ def rules_svelte_dependencies():
         name = "build_bazel_rules_svelte_deps",
         package_json = "@build_bazel_rules_svelte//internal:package.json",
         yarn_lock = "@build_bazel_rules_svelte//internal:yarn.lock",
+        symlink_node_modules = False,
     )
