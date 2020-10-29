@@ -11,22 +11,28 @@ def get_transitive_srcs(srcs, deps):
     )
 
 def _svelte(ctx):
+    base = ctx.attr.name + ".svelte"
+    temp = ctx.actions.declare_directory(base + ".temp")
+    temptsx = temp.path + "/" + base + ".tsx"
     ctx.actions.run_shell(
         mnemonic = "Svelte",
         command = """\
-{svelte} {input} {output_js} && \
-{tsc} {tsc_args} {input}.tsx {shims} && \
-mv {input}.d.ts {output_def} && \
-rm {input}.tsx""".format(
+{svelte} {input} {output_js} {temp} && \
+{tsc} {tsc_args} {temptsx} {shims} && \
+mv {temp}/{base}.d.ts {output_def} && \
+rm {temptsx}""".format(
             svelte = ctx.executable._svelte.path,
             input = ctx.file.entry_point.path,
             output_js = ctx.outputs.build.path,
             tsc = ctx.executable._typescript.path,
             output_def = ctx.outputs.buildDef.path,
+            temp = temp.path,
+            temptsx = temptsx,
+            base = base,
             tsc_args = "--jsx preserve --emitDeclarationOnly --declaration --skipLibCheck",
             shims = " ".join([f.path for f in ctx.files._shims]),
         ),
-        outputs = [ctx.outputs.build, ctx.outputs.buildDef],
+        outputs = [ctx.outputs.build, ctx.outputs.buildDef, temp],
         inputs = [ctx.file.entry_point] + ctx.files._shims,
         tools = [ctx.executable._svelte, ctx.executable._typescript],
     )

@@ -1,8 +1,11 @@
 const fs = require("fs");
 const process = require("process");
+const path = require("path");
 
-const outputJs = process.argv[3];
 const input = process.argv[2];
+const outputJs = process.argv[3];
+const temp = process.argv[4];
+
 
 const svelte = require("svelte/compiler");
 
@@ -22,7 +25,8 @@ let codeLines = tsoutput.code.split("\n");
 // replace the "///<reference types="svelte" />" with a line
 // turning off checking, as we'll use svelte-check for that
 codeLines[0] = "// @ts-nocheck";
-const outputTs = input + ".tsx";
+const outputBase = path.basename(outputJs.replace(".mjs", ".tsx"));
+const outputTs = path.join(temp, outputBase);
 fs.writeFileSync(outputTs, codeLines.join("\n"));
 
 svelte.preprocess(source, preprocessOptions).then(
