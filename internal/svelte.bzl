@@ -16,7 +16,8 @@ def _svelte(ctx):
         command = """\
 {svelte} {input} {output_js} && \
 {tsc} {tsc_args} {input}.tsx {shims} && \
-mv {input}.d.ts {output_def}""".format(
+mv {input}.d.ts {output_def} && \
+rm {input}.tsx""".format(
             svelte = ctx.executable._svelte.path,
             input = ctx.file.entry_point.path,
             output_js = ctx.outputs.build.path,
