@@ -22,7 +22,7 @@ let codeLines = tsoutput.code.split("\n");
 // replace the "///<reference types="svelte" />" with a line
 // turning off checking, as we'll use svelte-check for that
 codeLines[0] = "// @ts-nocheck";
-const outputTs = "temp.tsx";
+const outputTs = input + ".tsx";
 fs.writeFileSync(outputTs, codeLines.join("\n"));
 
 svelte.preprocess(source, preprocessOptions).then(

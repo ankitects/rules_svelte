@@ -15,8 +15,8 @@ def _svelte(ctx):
         mnemonic = "Svelte",
         command = """\
 {svelte} {input} {output_js} && \
-{tsc} {tsc_args} temp.tsx {shims} && \
-mv temp.d.ts {output_def}""".format(
+{tsc} {tsc_args} {input}.tsx {shims} && \
+mv {input}.d.ts {output_def}""".format(
             svelte = ctx.executable._svelte.path,
             input = ctx.file.entry_point.path,
             output_js = ctx.outputs.build.path,
