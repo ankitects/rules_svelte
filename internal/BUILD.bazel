@@ -52,5 +52,6 @@ nodejs_binary(
         "@build_bazel_rules_svelte_deps//svelte2tsx",
     ],
     entry_point = ":svelte.js",
+    templated_args = ["--bazel_patch_module_resolver"],
     visibility = ["//visibility:public"],
 )
