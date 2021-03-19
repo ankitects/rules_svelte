@@ -372,10 +372,10 @@ svelte-preprocess@^4.5.2:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-svelte2tsx@^0.1.131:
-  version "0.1.131"
-  resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.1.131.tgz#609857b5312f9dfc39472952a7cb4973cd2b731d"
-  integrity sha512-9o1Ld756S6v3hj0wVTs4qU2WkZR5M6sGpUway7K/PCY0ehlGWshId3vtcwY1VhGfHBhKQssetZs5/s3srwa2cw==
+svelte2tsx@^0.1.182:
+  version "0.1.182"
+  resolved "https://registry.yarnpkg.com/svelte2tsx/-/svelte2tsx-0.1.182.tgz#cb76006c6529e51c09b30f23296667154ba9f838"
+  integrity sha512-c0Qnc8sebPt940boE4CvRcmwLu+XRyhQsm89ZPXlxvZ3ea7VQmtWOhWkReSVyxnEFRm7VnrKCrTitZHKGNCptA==
   dependencies:
     dedent-js "^1.0.1"
     pascal-case "^3.1.1"
@@ -397,10 +397,10 @@ tslib@^1.10.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-typescript@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.2.tgz#7ea7c88777c723c681e33bf7988be5d008d05ac2"
-  integrity sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
+typescript@4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
+  integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
 
 uglify-js@3.10.1:
   version "3.10.1"
